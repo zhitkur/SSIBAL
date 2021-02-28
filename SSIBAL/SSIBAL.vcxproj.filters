@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Imgui">
+      <UniqueIdentifier>{e53e32bc-4ded-4a51-b64b-47424c4e1745}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{8fae2a27-9535-4894-98f2-8a6203217a4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fonts">
+      <UniqueIdentifier>{67fd899c-afb1-4df7-a28d-fdb3dfd493ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FindPattern">
+      <UniqueIdentifier>{764e4ec1-4dc4-4164-a746-5a3934d3990f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hook">
+      <UniqueIdentifier>{af29b795-a6e3-47c7-ac86-934310c2d223}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Config">
+      <UniqueIdentifier>{e0da16bf-5aae-4999-8124-29c35dc87b12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{c9f251c5-dcd7-43d2-ba85-d451ae999674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\features">
+      <UniqueIdentifier>{eca79eee-f5aa-4c59-9a11-20b3af51acca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>Header Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>Header Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>Header Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx9.cpp">
+      <Filter>Header Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>Header Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>Header Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Patternscaning.cpp">
+      <Filter>Header Files\FindPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="hook.cpp">
+      <Filter>Header Files\Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="config.cpp">
+      <Filter>Header Files\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Header Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="hack.cpp">
+      <Filter>Header Files\features</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx9.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>Header Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Desktop\CSGOSimple-master\CSGOSimple\fonts\cousine.hpp">
+      <Filter>Header Files\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Desktop\CSGOSimple-master\CSGOSimple\fonts\droid.hpp">
+      <Filter>Header Files\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Desktop\CSGOSimple-master\CSGOSimple\fonts\fonts.hpp">
+      <Filter>Header Files\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="detours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Patternscaning.h">
+      <Filter>Header Files\FindPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="hook.h">
+      <Filter>Header Files\Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="offsets.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hack.hpp">
+      <Filter>Header Files\features</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

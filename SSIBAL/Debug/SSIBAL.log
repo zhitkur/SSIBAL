@@ -1,0 +1,5 @@
+﻿  dllmain.cpp
+C:\Users\Administrator\source\repos\SSIBAL\SSIBAL\dllmain.cpp(25,84): warning C4477: 'printf' : format string '%X' requires an argument of type 'unsigned int', but variadic argument 1 has type 'vec3'
+detours.lib(detours.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(detours.obj)' or at 'C:\Users\Administrator\source\repos\SSIBAL\Debug\detours.pdb'; linking object as if no debug info
+detours.lib(disasm.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(disasm.obj)' or at 'C:\Users\Administrator\source\repos\SSIBAL\Debug\detours.pdb'; linking object as if no debug info
+  SSIBAL.vcxproj -> C:\Users\Administrator\source\repos\SSIBAL\Debug\SSIBAL.dll
