@@ -2,7 +2,8 @@
 
 #define DegToRad(val1) ((val1 * PI) / 180)  
 
-// xhair¿¡¼­ Çã¿ëµÇ´Â °Å¸®¸¦ º¯°æÇÏ·Á¸é ÀÌ °ªÀ» º¯°æ
+// xhairï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+// Change this value to change the allowed distance on xhair
 float fov = 10;
 float PI = 3.14159265358f;
 
@@ -18,7 +19,8 @@ int closestEnt = 99999;
 uintptr_t* bestEnt = nullptr;
 
 vec3 CalculateAngle(vec3 src, vec3 dst) {
-	// dst¿¡¼­ src ÁÂÇ¥¸¦ °¢°¢ »©´Â ÀÌÀ¯´Â ·ÎÄÃ ÇÃ·¹ÀÌ¾î¸¦ ¿øÁ¡(0, 0, 0)¿¡¼­ °è»êÇÏ±â À§ÇØ¼­ÀÓ
+	// dstï¿½ï¿½ï¿½ï¿½ src ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½(0, 0, 0)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
+	// The reason for subtracting the src coordinates from the dst is to calculate the local player from the origin (0, 0, 0)
 	vec3 angle, delta = { dst.x - src.x, dst.y - src.y, dst.z - src.z };
 	float hyp = sqrt(delta.x * delta.x + delta.y * delta.y);
 
@@ -30,14 +32,15 @@ vec3 CalculateAngle(vec3 src, vec3 dst) {
 }
 
 vec3 CalcAngle(const vec3& src, const vec3& dst) {
-	// dst¿¡¼­ src ÁÂÇ¥¸¦ °¢°¢ »©´Â ÀÌÀ¯´Â ·ÎÄÃ ÇÃ·¹ÀÌ¾î¸¦ ¿øÁ¡(0, 0, 0)¿¡¼­ °è»êÇÏ±â À§ÇØ¼­ÀÓ
+	// dstï¿½ï¿½ï¿½ï¿½ src ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½(0, 0, 0)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
 	vec3 angle;
 	vec3 delta = { (dst.x - src.x), (dst.y - src.y), (dst.z - src.z) };
-	// ºøº¯ C(hyp)¸¦ ±¸ÇÏ´Â °ø½Ä 
-	// c2 = a2 + b2 -> hyp = ·çÆ®(a2 + b2); 
+	// ï¿½ï¿½ï¿½ï¿½ C(hyp)ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ (formula for getting hyp)
+	// c2 = a2 + b2 -> hyp = ï¿½ï¿½Æ®(a2 + b2); 
 	float hyp = sqrt(delta.x * delta.x + delta.y * delta.y);
 
-	// 180.0 / PI¸¦ ÇÏ´Â ÀÌÀ¯´Â ¶óµð¾È °ªÀ» 60ºÐ¹ý(µµ)À¸·Î ¹Ù²Ù´Â ¿ëµµ
+	// 180.0 / PIï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 60ï¿½Ð¹ï¿½(ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù´ï¿½ ï¿½ëµµ 
+	// 180.0 / PI The reason for PI is to change the radian value to 60 degrees.
 	angle.x = -asin(delta.z / hyp) * (180.f / PI); // Pitch
 	angle.y = atan2(delta.y, delta.x) * (180.f / PI); // Yaw, opp / adj
 	angle.z = 0.0f;
@@ -97,27 +100,23 @@ namespace Hack
 		{
 			for (int i = 1; i <= 32; i++) { // ent loop
 				
-				// 0x4D9EAE4 - dwEntityList
-				// Get the Current Entity
 				uintptr_t* curEnt = (uintptr_t*)(Client + dwEntityList + (i * 0x10));
-				//vec3 enHeadPos = getBone(*curEnt + m_dwBoneMatrix, 8);
-				// entity°¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+				// entityï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ (if Entity exists)
 				if (curEnt != nullptr && *(uintptr_t*)curEnt != NULL ) {
-					// 0x138 - vecOrigin
-					//vec3 tempAngles = CalcAngle(*(vec3*)(*localPlayer + 0x138), *(vec3*)(*curEnt + 0x138));
 					vec3 tempAngles = CalculateAngle(*(vec3*)(LocalPlayer + m_vecOrigin), *(vec3*)(*curEnt + m_vecOrigin));
-
-					// ÇÃ·¹ÀÌ¾îÀÇ fov È¹µæ
-					// ºä¾Þ±Û (x^2) + (y^2)°ªÀ» Á¦°öÇÑ ÈÄ Á¦°ö±Ù ÇÑ °ªÀ» distance¿¡ ³Ö´Â´Ù.
+					// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ fov È¹ï¿½ï¿½	(Get Player fov)
+					// ï¿½ï¿½Þ±ï¿½ (x^2) + (y^2)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ distanceï¿½ï¿½ ï¿½Ö´Â´ï¿½.
+					// Squares the value of view angle (x^2) + (y^2) and places the value of square root in distance.
 					float dist = std::sqrt(std::powf((viewAngles->x - tempAngles.x), 2) + std::powf((viewAngles->y - tempAngles.y), 2));
 					// 0xED - Dormant, 0x100 - Health
 					if (bestEnt == curEnt || dist < closestEnt || *(bool*)(*bestEnt + m_bDormant)
 						|| *(int*)(*bestEnt + m_iHealth) <= 0 && (!*(bool*)(*curEnt + m_bDormant) && *(int*)(*curEnt + m_iHealth) > 0)) {
-						// Æ÷ÀÎÅÍ¸¦ ÃÖÀûÀÇ entity·Î ¼³Á¤ÇÑ´Ù.
+						// ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ entityï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. (Set the pointer to the optimal entity)
 						bestEnt = curEnt;
-						// °¡Àå °¡±î¿î fov ¼³Á¤
+						// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ fov ï¿½ï¿½ï¿½ï¿½ (Set nearest fov)
 						closestEnt = dist;
-						// fov°¡ ÇØ´ç Àû¿¡°Ô ¿¡ÀÓÀ§Ä¡º¸´Ù Ä¿¾ßÇÏ°í, ÃÑÀ» ½÷¾ßÇÏ°í, Dormant°¡ Á¸ÀçÇØ¾ßÇÏ°í, Ã¼·ÂÀÌ 0º¸´Ù Ä¿¾ß angleÀ» ¹Ù²Þ
+						// fovï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½Ï°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½, Dormantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½Ï°ï¿½, Ã¼ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ angleï¿½ï¿½ ï¿½Ù²ï¿½
+						// fov must be greater than the aim position, shoot, Dormant must exist, hit more than zero to change angle
 						if ((closestEnt < fov) && GetAsyncKeyState(VK_LBUTTON) && (!*(bool*)(*curEnt + m_bDormant) && *(int*)(*curEnt + m_iHealth) > 0)) { // if we click our pew pew button and our ent isnt dead n shit then we snap n shit
 							*viewAngles = tempAngles; // set our actual viewangle
 						}

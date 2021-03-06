@@ -27,7 +27,8 @@ void draw_render(IDirect3DDevice9* pDevice)
 }
 
 
-// ¸Þ½ÃÁö ÇÚµéÀ» Ã³¸®ÇØ¼­ GUI¿¡ ¸¶¿ì½º¸¦ »ç¿ëÇÒ ¼ö ÀÖµµ·Ï ÇÔ
+// ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ø¼ï¿½ GUIï¿½ï¿½ ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½
+// Handle message handles to make mouse available for GUI
 LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	if (Config::bMenu && ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam))
@@ -67,7 +68,8 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice)
 BOOL WINAPI InitD3D9()
 {
 	window = FindWindowA(NULL, windowName);
-	oWndProc = (WNDPROC)SetWindowLongPtr(window, GWL_WNDPROC, reinterpret_cast<LONG_PTR>(WndProc));	// Ã¢À» ÀÌµ¿½ÃÅ³ ¼ö ÀÖµµ·Ï ÇÔ
+	// can move window
+	oWndProc = (WNDPROC)SetWindowLongPtr(window, GWL_WNDPROC, reinterpret_cast<LONG_PTR>(WndProc));	// Ã¢ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½
 
 	IDirect3D9* pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 	if (!pD3D)
